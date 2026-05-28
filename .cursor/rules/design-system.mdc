@@ -1,0 +1,10 @@
+---
+description: ExamAITutor UI work must follow the project design system.
+globs:
+  - "src/**/*.{ts,tsx,css}"
+alwaysApply: false
+---
+
+Before changing UI, read `design-system/MASTER.md` and, when relevant, `design-system/pages/<page>.md`.
+
+Use shadcn/ui components and semantic Tailwind tokens. Validate mobile at 375px. Keep touch targets at least 44px high, preserve visible focus states, avoid raw hex colors in components, and avoid decorative gradients/orbs.
