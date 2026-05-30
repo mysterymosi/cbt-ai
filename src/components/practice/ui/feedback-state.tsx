@@ -10,6 +10,7 @@ import type {
   PracticeQuestion,
 } from "@/components/practice/types";
 import { ReportQuestionDialog } from "@/components/reports";
+import { RichHtml } from "@/components/shared";
 import { TutorPanel } from "@/components/tutor";
 import type { TutorThreadState } from "@/components/tutor/types";
 import { buttonVariants } from "@/components/ui/button";
@@ -70,7 +71,8 @@ export function FeedbackState({
                 isSelected && !isCorrect && "border-destructive bg-destructive/5",
               )}
             >
-              <span className="font-semibold">{key}.</span> {value}
+              <span className="font-semibold">{key}.</span>{" "}
+              <RichHtml html={value} />
               {isCorrect ? (
                 <span className="ml-2 font-medium text-primary">Correct</span>
               ) : null}
@@ -86,9 +88,11 @@ export function FeedbackState({
 
       <div className="rounded-lg bg-muted p-4">
         <p className="text-sm font-medium">Explanation</p>
-        <p className="mt-2 text-sm leading-6 text-muted-foreground">
-          {explanation}
-        </p>
+        <RichHtml
+          as="p"
+          className="mt-2 text-sm leading-6 text-muted-foreground"
+          html={explanation}
+        />
       </div>
 
       <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">

@@ -4,6 +4,7 @@ import {
 } from "@/components/admin/actions/admin-reports";
 import type { AdminReportRow } from "@/components/admin/types";
 import { REPORT_ISSUE_LABELS } from "@/components/reports";
+import { RichHtml } from "@/components/shared";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -46,9 +47,11 @@ export function AdminReportQueue({ reports }: AdminReportQueueProps) {
                     <Badge variant="outline">Pending review</Badge>
                   )}
                 </div>
-                <p className="mt-3 text-sm font-medium line-clamp-2">
-                  {report.questions?.question_text ?? "Question"}
-                </p>
+                <RichHtml
+                  as="p"
+                  className="mt-3 line-clamp-2 text-sm font-medium"
+                  html={report.questions?.question_text ?? "Question"}
+                />
                 {report.message ? (
                   <p className="mt-2 text-sm text-muted-foreground">
                     {report.message}

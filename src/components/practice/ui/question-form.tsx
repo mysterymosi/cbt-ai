@@ -1,6 +1,7 @@
 import { submitAttempt } from "@/components/practice/actions/practice";
 import { getSortedOptions } from "@/components/practice/lib/options";
 import type { PracticeQuestion } from "@/components/practice/types";
+import { RichHtml } from "@/components/shared";
 import { SubmitButton } from "@/components/ui/submit-button";
 
 type QuestionFormProps = {
@@ -31,7 +32,7 @@ export function QuestionForm({ sessionId, question }: QuestionFormProps) {
             />
             <span className="flex gap-2 text-sm leading-6">
               <span className="font-semibold">{key}.</span>
-              <span>{value}</span>
+              <RichHtml html={value} />
             </span>
           </label>
         ))}

@@ -75,7 +75,16 @@ export async function POST(request: Request) {
     model: google("gemini-2.5-flash"),
     system: buildTutorSystemPrompt(context),
     messages: await convertToModelMessages(uiMessages),
-    maxOutputTokens: 600,
+    // Gemini 2.5 counts internal "thinking" tokens toward maxOutputTokens; 600
+    // often leaves only a sentence or two of visible tutor text.
+    maxOutputTokens: 1024,
+    providerOptions: {
+      google: {
+        thinkingConfig: {
+          thinkingBudget: 0,
+        },
+      },
+    },
     onFinish: async ({ usage }) => {
       await logTutorUsage({
         userId: user.id,

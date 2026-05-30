@@ -81,23 +81,19 @@ This is **not part of the MVP**, but the architecture should not block it.
 ### Business Goals
 
 1. **Validate demand for AI-assisted exam practice**
-   - Prove that students do not just want past questions; they want explanations and tutor-style support.
-
+  - Prove that students do not just want past questions; they want explanations and tutor-style support.
 2. **Drive repeat usage**
-   - Exam prep products win when students return multiple times per week.
-   - The MVP should optimize for practice streaks, completed sessions, and tutor interactions.
-
+  - Exam prep products win when students return multiple times per week.
+  - The MVP should optimize for practice streaks, completed sessions, and tutor interactions.
 3. **Create a scalable content foundation**
-   - Use ALOC to bootstrap question coverage quickly.
-   - Design the data model so future exams can be added later: professional exams, IELTS, TOEFL, SAT, GRE, nursing exams, accounting exams, etc.
-
+  - Use ALOC to bootstrap question coverage quickly.
+  - Design the data model so future exams can be added later: professional exams, IELTS, TOEFL, SAT, GRE, nursing exams, accounting exams, etc.
 4. **Identify willingness to pay**
-   - MVP can launch free or freemium.
-   - Instrument usage to learn which features users would pay for: unlimited AI tutor, detailed analytics, mock exams, study plans.
-
+  - MVP can launch free or freemium.
+  - Instrument usage to learn which features users would pay for: unlimited AI tutor, detailed analytics, mock exams, study plans.
 5. **Build trust**
-   - Accuracy matters. A wrong explanation destroys confidence.
-   - The MVP must make it easy for users to report questionable questions, answers, or explanations.
+  - Accuracy matters. A wrong explanation destroys confidence.
+  - The MVP must make it easy for users to report questionable questions, answers, or explanations.
 
 ### User Goals
 
@@ -186,14 +182,13 @@ A student can start a practice session by selecting:
 Session modes for MVP:
 
 1. **Practice Mode**
-   - Student answers one question at a time.
-   - They get immediate feedback after submitting.
-   - AI tutor is available after answer submission.
-
+  - Student answers one question at a time.
+  - They get immediate feedback after submitting.
+  - AI tutor is available after answer submission.
 2. **Timed Mode**
-   - Student chooses a timer.
-   - Feedback appears after completion.
-   - AI tutor is available during review, not during the timed attempt.
+  - Student chooses a timer.
+  - Feedback appears after completion.
+  - AI tutor is available during review, not during the timed attempt.
 
 Opinionated MVP call: launch both if feasible, but prioritize **Practice Mode**. It is better for learning and showcases the AI tutor more clearly.
 
@@ -1238,7 +1233,7 @@ That focus will get cleaner feedback, faster iteration, and a better shot at bui
 
 ## Sources Consulted
 
-- ALOC GitHub repository: https://github.com/Seunope/aloc-endpoints
-- ALOC API parameters wiki: https://github.com/Seunope/aloc-endpoints/wiki/API-Parameters
-- ALOC Questions API website: https://questions.aloc.com.ng/
+- ALOC GitHub repository: [https://github.com/Seunope/aloc-endpoints](https://github.com/Seunope/aloc-endpoints)
+- ALOC API parameters wiki: [https://github.com/Seunope/aloc-endpoints/wiki/API-Parameters](https://github.com/Seunope/aloc-endpoints/wiki/API-Parameters)
+- ALOC Questions API website: [https://questions.aloc.com.ng/](https://questions.aloc.com.ng/)
 

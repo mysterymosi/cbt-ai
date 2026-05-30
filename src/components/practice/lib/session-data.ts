@@ -1,5 +1,9 @@
 import { redirect } from "next/navigation";
 import { ensureQuestionPoolForSession } from "@/components/questions/lib/ensure-pool";
+import {
+  mapPracticeQuestion,
+  type PracticeQuestionRow,
+} from "@/components/questions/lib/map-practice-question";
 import type {
   PracticeAttempt,
   PracticeAttemptWithQuestion,
@@ -18,7 +22,7 @@ const attemptSelect =
 const attemptWithQuestionSelect =
   "id, question_id, selected_answer, correct_answer, is_correct, created_at, questions(id, question_text, year)";
 const questionSelect =
-  "id, subject, year, question_text, options, correct_answer, source_explanation, local_override_answer, local_override_explanation";
+  "id, subject, year, question_text, options, correct_answer, source_explanation, local_override_answer, local_override_explanation, raw_payload";
 
 export type PracticeSessionState = {
   session: PracticeSession;
@@ -69,6 +73,8 @@ export async function getPracticeSessionState({
       session,
       attemptedQuestionIds,
     );
+
+    // console.log({ poolStatus });
 
     if (!poolStatus.ok) {
       const totalAttempts = await getUserAttemptCount(userId);
@@ -239,9 +245,9 @@ async function getQuestionById(id: string) {
     .select(questionSelect)
     .eq("id", id)
     .eq("is_disabled", false)
-    .maybeSingle<PracticeQuestion>();
+    .maybeSingle<PracticeQuestionRow>();
 
-  return data;
+  return data ? mapPracticeQuestion(data) : null;
 }
 
 async function getNextQuestion(
@@ -266,6 +272,6 @@ async function getNextQuestion(
     query = query.not("id", "in", `(${attemptedQuestionIds.join(",")})`);
   }
 
-  const { data } = await query.overrideTypes<PracticeQuestion[]>();
-  return data?.[0] ?? null;
+  const { data } = await query.overrideTypes<PracticeQuestionRow[]>();
+  return data?.[0] ? mapPracticeQuestion(data[0]) : null;
 }

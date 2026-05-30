@@ -6,6 +6,7 @@ export type TutorContext = {
   subject: string;
   year: string | null;
   question_id: string;
+  section: string | null;
   question: string;
   options: Record<string, string>;
   correct_answer: string;
