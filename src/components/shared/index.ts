@@ -1,3 +1,5 @@
 export { FeatureCard } from "./ui/feature-card"
+export { MarkdownContent } from "./ui/markdown-content"
+export { RichHtml } from "./ui/rich-html"
 export { SectionIntro } from "./ui/section-intro"
 export { SmallProof } from "./ui/small-proof"

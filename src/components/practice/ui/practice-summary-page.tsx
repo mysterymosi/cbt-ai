@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRightIcon, RotateCcwIcon, SparklesIcon } from "lucide-react";
 import { getPracticeSummaryState } from "@/components/practice/lib/session-data";
+import { RichHtml } from "@/components/shared";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -121,9 +122,11 @@ export async function PracticeSummaryPage({ sessionId }: PracticeSummaryPageProp
                   href={`/practice/${sessionId}?question=${attempt.question_id}`}
                   className="rounded-lg border p-4 text-sm transition-colors hover:bg-muted"
                 >
-                  <span className="line-clamp-2 font-medium">
-                    {attempt.questions?.question_text ?? "Question"}
-                  </span>
+                  <RichHtml
+                    as="span"
+                    className="line-clamp-2 font-medium"
+                    html={attempt.questions?.question_text ?? "Question"}
+                  />
                   <span className="mt-2 flex text-muted-foreground">
                     Your answer: {attempt.selected_answer} · Correct:{" "}
                     {attempt.correct_answer}

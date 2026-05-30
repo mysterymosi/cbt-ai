@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import type { MissedReviewItem } from "@/components/progress/types";
+import { RichHtml } from "@/components/shared";
 import {
   Card,
   CardContent,
@@ -38,9 +39,11 @@ export function DashboardMissedReview({ items }: DashboardMissedReviewProps) {
                   </span>
                   <ArrowRightIcon className="size-4 shrink-0 text-muted-foreground" />
                 </div>
-                <span className="mt-2 line-clamp-2 block text-muted-foreground">
-                  {item.questionText}
-                </span>
+                <RichHtml
+                  as="span"
+                  className="mt-2 line-clamp-2 block text-muted-foreground"
+                  html={item.questionText}
+                />
                 <span className="mt-2 block text-xs text-muted-foreground">
                   Your answer: {item.selectedAnswer} · Correct: {item.correctAnswer}
                 </span>

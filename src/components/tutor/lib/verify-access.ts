@@ -1,8 +1,12 @@
-import type { PracticeAttempt, PracticeQuestion } from "@/components/practice/types";
+import type { PracticeAttempt } from "@/components/practice/types";
+import {
+  mapPracticeQuestion,
+  type PracticeQuestionRow,
+} from "@/components/questions/lib/map-practice-question";
 import { createClient } from "@/lib/supabase/server";
 
 const questionSelect =
-  "id, subject, year, question_text, options, correct_answer, source_explanation, local_override_answer, local_override_explanation";
+  "id, subject, year, question_text, options, correct_answer, source_explanation, local_override_answer, local_override_explanation, raw_payload";
 
 export async function getTutorAccessContext({
   userId,
@@ -38,16 +42,18 @@ export async function getTutorAccessContext({
     return null;
   }
 
-  const { data: question } = await supabase
+  const { data: questionRow } = await supabase
     .from("questions")
     .select(questionSelect)
     .eq("id", questionId)
     .eq("is_disabled", false)
-    .maybeSingle<PracticeQuestion>();
+    .maybeSingle<PracticeQuestionRow>();
 
-  if (!question) {
+  if (!questionRow) {
     return null;
   }
+
+  const question = mapPracticeQuestion(questionRow);
 
   return { attempt, question };
 }

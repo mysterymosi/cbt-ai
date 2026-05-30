@@ -8,6 +8,7 @@ import { trackEvent } from "@/lib/analytics/track";
 import type { TutorPanelProps } from "@/components/tutor/types";
 import { TUTOR_QUICK_ACTIONS } from "@/components/tutor/types";
 import { TutorFeedbackButtons } from "@/components/tutor/ui/tutor-feedback-buttons";
+import { MarkdownContent } from "@/components/shared";
 import { getSubjectLabel } from "@/lib/constants/subjects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -103,7 +104,7 @@ export function TutorPanel({
           </Button>
         }
       />
-      <SheetContent side="right" className="flex w-full flex-col gap-0 p-0 sm:max-w-lg">
+      <SheetContent side="right" className="flex w-full flex-col gap-0 p-0 data-[side=right]:sm:max-w-lg">
         <SheetHeader className="border-b px-4 py-4 text-left">
           <SheetTitle>AI Tutor</SheetTitle>
           <SheetDescription>
@@ -221,7 +222,11 @@ function TutorMessage({ message }: { message: UIMessage }) {
       <p className="mb-1 text-xs font-medium opacity-80">
         {isUser ? "You" : "Tutor"}
       </p>
-      <p className="whitespace-pre-wrap">{text}</p>
+      {isUser ? (
+        <p className="whitespace-pre-wrap">{text}</p>
+      ) : (
+        <MarkdownContent content={text} />
+      )}
     </div>
   );
 }

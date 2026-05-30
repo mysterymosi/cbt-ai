@@ -3,6 +3,7 @@ import type {
   PracticeAttempt,
   PracticeQuestion,
 } from "@/components/practice/types";
+import { RichHtml } from "@/components/shared";
 import {
   Card,
   CardContent,
@@ -40,8 +41,13 @@ export async function QuestionCard({
   return (
     <Card>
       <CardHeader>
+        {question.section ? (
+          <div className="mb-3 rounded-lg bg-muted px-3 py-2 text-sm leading-6 text-muted-foreground">
+            <RichHtml html={question.section} />
+          </div>
+        ) : null}
         <CardTitle className="text-xl leading-relaxed">
-          {question.question_text}
+          <RichHtml html={question.question_text} />
         </CardTitle>
         <CardDescription>
           {question.year ? `Past UTME ${question.year}` : "Cached UTME question"}

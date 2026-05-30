@@ -1,5 +1,6 @@
 import { updateQuestionOverride } from "@/components/admin/actions/admin-questions";
 import type { AdminQuestionRow } from "@/components/admin/types";
+import { RichHtml } from "@/components/shared";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -59,7 +60,11 @@ export function AdminQuestionOverrides({
                     <Badge variant="destructive">Disabled</Badge>
                   ) : null}
                 </div>
-                <p className="mt-3 text-sm font-medium">{question.question_text}</p>
+                <RichHtml
+                  as="p"
+                  className="mt-3 text-sm font-medium"
+                  html={question.question_text}
+                />
                 <p className="mt-2 text-xs text-muted-foreground">
                   ALOC ID {question.external_question_id} · DB {question.id}
                 </p>

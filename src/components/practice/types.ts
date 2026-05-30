@@ -23,6 +23,7 @@ export type PracticeQuestion = {
   source_explanation: string | null;
   local_override_answer: string | null;
   local_override_explanation: string | null;
+  section: string | null;
 };
 
 export type PracticeAttempt = {
